@@ -2,6 +2,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const cors = require("cors");
+const morgan = require("morgan");
+
 const connectDB = require("./configs/database");
 const userRoutes = require("./user-module/user-routes");
 const taskRoutes = require("./task-module/task-routes");
@@ -16,10 +18,11 @@ const PORT = process.env.PORT ?? 5000;
 connectDB();
 
 //  pre-middlewares
+// before continue to the routes
 app.use(cors());
 app.use(helmet());
 app.use(express.json()); // json parser --> body
-// before continue to the routes
+app.use(morgan("dev"));
 
 // routes
 // [ --- ]

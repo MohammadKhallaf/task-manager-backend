@@ -13,8 +13,13 @@ exports.register = async (request, response) => {
     const hashedPassword = await bcrypt.hash(data.password, 12);
     const user = await User.create({ ...data, password: hashedPassword });
 
-    const { password, ...rest } = user;
-    response.status(201).json({ user: rest });
+    response.status(201).json({
+      user: {
+        _id: user._id,
+        username: user.username,
+        role: user.role,
+      },
+    });
   } catch (error) {
     response.status(400).json(error);
   }
@@ -41,8 +46,15 @@ exports.login = async (request, response) => {
       { expiresIn: "1d" }
     );
 
-    const { password, ...rest } = user;
-    response.status(200).json({ user: rest, token });
+    response.status(200).json({
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+      },
+      token,
+    });
   } catch (error) {
     response.status(400).json(error);
   }

@@ -10,7 +10,7 @@ router.use(authMiddleware);
 router.post("/", taskController.createTask);
 router.get("/:id", taskController.getTask);
 router.get("/", taskController.getTasks);
-router.patch("/", taskController.updateTask);
-router.delete("/", taskController.deleteTask);
+router.patch("/:id", taskController.updateTask);
+router.delete("/:id", taskController.deleteTask);
 
 module.exports = router;

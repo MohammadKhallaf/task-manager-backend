@@ -4,9 +4,10 @@ const jwt = require("jsonwebtoken");
 const authMiddleware = async (request, response, next) => {
   try {
     const authHeader =
-      request.header["Authorization"] || request.header["authorization"];
+      request.headers["Authorization"] || request.headers["authorization"];
     // `Bearer faihedgifhkgljhfdsyiyhio`
     const token = authHeader.replace("Bearer ", "");
+
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decodedToken._id;
 
