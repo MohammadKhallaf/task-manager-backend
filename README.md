@@ -16,3 +16,9 @@
       3. jwt -> jsonwebtoken
       4. server -> cors | helmet
 2. connect DB
+3. build folder structure
+   ```markdown
+   - models
+   - routes
+   - controllers
+   ```
