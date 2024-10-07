@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const cors = require("cors");
 const connectDB = require("./configs/database");
+const userRoutes = require("./user-module/user-routes");
+const taskRoutes = require("./task-module/task-routes");
 
 dotenv.config();
 const app = express();
@@ -21,6 +23,8 @@ app.use(express.json()); // json parser --> body
 
 // routes
 // [ --- ]
+app.use("/api/tasks", taskRoutes);
+app.use("/api/users", userRoutes);
 
 // after -middleware (after)
 
