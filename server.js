@@ -30,7 +30,7 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
-    res.send("Welcome to my Express.js App!");
+    res.send("Task Management Backend is up and running!");
 });
 
 // after -middleware (after)
