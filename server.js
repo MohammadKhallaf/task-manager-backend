@@ -29,6 +29,10 @@ app.use(morgan("dev"));
 app.use("/api/tasks", taskRoutes);
 app.use("/api/users", userRoutes);
 
+app.get("/", (req, res) => {
+    res.send("Task Management Backend is up and running!");
+});
+
 // after -middleware (after)
 
 app.listen(PORT, () => console.log(`server is running at port ${PORT}`));
